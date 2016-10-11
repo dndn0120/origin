@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    //안녕하세요
+    //안녕하세요히히히
     protected $fillable = ['name','contents'];
     public function user()
     {
