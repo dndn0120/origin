@@ -1,0 +1,149 @@
+a:link {
+	text-decoration: none; 
+	color: black;
+}
+a:visited {
+    text-decoration: none; 
+    color: black;
+}
+table.type01 {
+	border-collapse: collapse;
+	text-align: center;
+	line-height:1.5;
+	border-left:1px solid #EAEAEA;
+	margin: auto;
+	width:80%;
+}
+table.type01 thead th {
+	padding: 6px;
+	text-align:center;
+	font-weight: bold;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #c00;
+    background: #F6F6F6;
+}
+table.type01 tbody tr {
+	padding: 2px;
+	border-bottom: 0.5px solid #c0c0c0;
+}
+table.type01 tbody tr:hover {
+	background:#F6F6F6;
+}
+
+table.type02 {
+	align:center;
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.0;
+    border-top: 1px solid #ccc;
+    border-left: 4px solid #369;
+    margin : auto;
+    width : 70%;
+}
+table.type02 th {
+    width: 60px;
+    height:5px;
+    padding: 6px;
+    font-weight: bold;
+    font-size:12;
+    text-align:center;
+    color: #153d73;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background:#e7eef1;
+
+}
+table.type02 td {
+    width: 200px;
+    font-size:12;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+table.type03 {
+	height:600px;
+    border-collapse: collapse;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin : auto;
+    width : 70%;
+    text-align:top;
+}
+button.btype01 {
+    padding:5px;
+    margin-top: 3px;
+    width:60px;
+    float:right;
+    margin-right:130px;
+}
+textarea.texa01 {
+	width:100%;
+	height:100%;
+}
+
+input[type=text].intext, select {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table.share1 {
+	text-align:center;
+	background:#e7eef1;
+	width:200px;
+	height:200px;
+	border:1px solid #333333;
+
+}
+
+table.share1 tr {
+    border-bottom: 1px solid #333333;
+}
+
+table.share1 td:hover {
+	background:#b0c1d2;
+	
+}
+table.share1 th {
+	height:10%;
+	font-size:0.8em;
+	background:#bbddff;
+	border-bottom: 1px solid #333333;
+}
+table.share2 {
+	border-collapse: collapse;
+	height:200px;
+    border:1px solid #333333;
+	width:500px;
+}
+table.share2 tr{
+	width:100%;
+    border-collapse: collapse;
+    border-bottom:1px solid #333333;
+}
+table.share2 td{
+    width:80%;
+    border-collapse: collapse;
+    border-bottom:1px solid #e3e3e3;
+}
+
+table.share3 {
+    border-collapse: collapse;
+    height:200px;
+    border:1px solid #333333;
+    width:300px;
+}
+table.share3 th {
+	border-bottom: 1px solid #333333;
+	height:10%;
+	background:#bbddff;
+	font-size:0.8em;
+	text-align:left;
+}
+
+

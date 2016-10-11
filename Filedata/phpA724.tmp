@@ -1,0 +1,17 @@
+
+whoisdesk 서버 업데이트 할 파일
+
+lib/class/service/class.remoteProcessGroupware.php
+lib/class/service/class.groupwareAction20.php
+lib/module/class.WhoisDesk20.php
+board/write.php
+board/modify.php
+board/delete.php
+board/skin/notice/write.html
+---------------------------------------------------------
+groupware2.0 서버 업데이트 할 파일
+
+src/Config.php
+src/Library/class/ToolAdminNotice.php
+src/Tool/notice.php
+src/Tool/rpcServer/class.requestGroupware.php
