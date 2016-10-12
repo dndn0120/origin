@@ -25,14 +25,11 @@ class ShareController extends Controller
             $data = $request->user()->workshares()->orderBy('id','desc')->get();
         }
         else{
-            $workshare = new Workshare();
-            $shareuser = new Shareuser();
-            $readcheck = new WorkShareReadCheck();
-            $result = $workshare->where('user_id',$request->user()->id)->orderBy('id','desc')->get();
+            $result = Workshare::where('user_id',$request->user()->id)->orderBy('id','desc')->get();
             foreach($result as $list)
             {
-                $total = $shareuser->where('sid',$list->id)->count();
-                $check = $readcheck->where('s_id',$list->id)->count();
+                $total = Shareuser::where('sid',$list->id)->count();
+                $check = WorkShareReadCheck::where('s_id',$list->id)->count();
 
                 $data[] = array(
                     'id'                => $list->id,
@@ -55,10 +52,8 @@ class ShareController extends Controller
     }
     public function writeInsert(Request $request)
     {
-        $workshare = new Workshare;
-        $shareuser = new Shareuser;
         $selectUserId = explode(",", $request->selectUser);
-        $insertData = $workshare->create([
+        $insertData = Workshare::create([
                         'subject'           => $request->subject,
                         'content'           => $request->content, 
                         'file_name'         => '0',
@@ -69,7 +64,7 @@ class ShareController extends Controller
         $arrayCount = count($selectUserId);
         for($i = 0; $i < $arrayCount; $i++)
         {
-            $shareuser->create([
+            Shareuser::create([
                 'sid'       => $insertData->id,
                 'userid'    => $selectUserId[$i],
                 'confirm'   => 0
