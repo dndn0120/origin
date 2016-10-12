@@ -4,10 +4,13 @@
 	<table class="type01">
 		<tr>
 			<td>
-				<a href="{{ url('/shareindex/receiver')}}">받은 업무공유 내역</a>
+				<a href="{{ url('/shareindex/receiver')}}">업무공유수신내역</a>
 			</td>
 			<td>
-				<a href="{{ url('/shareindex/send')}}">보낸 업무공유 내역</a>
+				<a href="{{ url('/shareindex/send')}}">업무공유발신내역</a>
+			</td>
+			<td>
+				<a href="{{ url('/shareindex/send')}}">임시저장</a>
 			</td>
 		</tr>
 	</table>
@@ -24,21 +27,16 @@
     		</tr>
     	</thead>
     	<tbody>
-    		@foreach($shareList as $share)
-        		<tr>
-        			<td>0</td>
-        			<td>
-        				<a href="{{ url('/detailView/'.$share->id) }}">{{$share->subject}}</a> 
-        				@if($share->important_level = 1)
-        					<font size='3' color='red'>*</font>
-        				@endif
-        			</td>
-        			<td>{{$share->user_name}}</td>
-        			<td>{{$share->created_at}}</td>
-	        		@if($mode == 'send')
-        				<td>{{$share->total}}/{{$share->uses}}</td>
-        			@endif
-        		</tr>
+    		@foreach($shareList as $list)
+    			<tr>
+    				<td>1</td>
+    				<td><a href="{{ url('/detailView/'.$list['id']) }}">{{$list['subject']}}</a></td>
+    				<td>{{$list['user_name']}}</td>
+    				<td>{{$list['created_at']}}</td>
+    				@if($mode == 'send')
+    					<td>{{$list['userCheck']}}/{{$list['userTotal']}}</td>
+    				@endif
+    			</tr>
     		@endforeach
 		</tbody>
 	</table>

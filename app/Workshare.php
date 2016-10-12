@@ -26,4 +26,8 @@ class Workshare extends Model
    {
        return $this->hasMany('App\WorkShareReadCheck','s_id');
    }
+   public function shareUser()
+   {
+       return $this->hasMany('App\shareuser','sid','id');
+   }
 }

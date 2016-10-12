@@ -22,34 +22,29 @@ class ShareController extends Controller
     public function index(Request $request,$mode='receiver')
     {
         if($mode == 'receiver'){
-            $data = $request->user()->workshares()->select('workshare.*,count(shares_user.*)')->groupBy('workshare.id')->get();
+            $data = $request->user()->workshares()->orderBy('id','desc')->get();
         }
         else{
-                
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            /*
-            $data = DB::table('workshare as w')
-                ->select(DB::raw('w.*,count(s.sid) as total, count(if(s.confirm=1,s.confirm,null)) as uses'))
-                ->leftJoin('shares_user as s','w.id','=','s.sid')
-                ->where('w.user_id',$request->user()->id)
-                ->groupBy('w.id')->get();
+            $workshare = new Workshare();
             $shareuser = new Shareuser();
-            $data = $shareuser->workshares()->select();
-            */
+            $readcheck = new WorkShareReadCheck();
+            $result = $workshare->where('user_id',$request->user()->id)->orderBy('id','desc')->get();
+            foreach($result as $list)
+            {
+                $total = $shareuser->where('sid',$list->id)->count();
+                $check = $readcheck->where('s_id',$list->id)->count();
+
+                $data[] = array(
+                    'id'                => $list->id,
+                    'subject'           => $list->subject,
+                    'content'           => $list->content,
+                    'user_name'         => $list->user_name,
+                    'important_level'   => $list->important_level,
+                    'created_at'        => $list->created_at,
+                    'userTotal'         => $total,
+                    'userCheck'         => $check
+                );
+            }
         }
         return view('share.index',['shareList'  =>  $data, 'mode' => $mode]);
     }
@@ -95,9 +90,11 @@ class ShareController extends Controller
         echo $userData;
     }
     public function detailView(Workshare $workshare,Request $request)
-    {        
+    {   
+        $getWork = $workshare->where('id',$workshare->id)->get();
+        $orderId = $getWork->implode('user_id');
         $check = $workshare->SendConfirm()->where('user_id',$request->user()->id)->get();
-        if($check->isEmpty())
+        if($check->isEmpty() && $orderId != $request->user()->id)
         {
             $workshare->SendConfirm()->create([
                 'user_id'   =>  $request->user()->id
@@ -111,11 +108,4 @@ class ShareController extends Controller
     {
         echo $name;
     }
-    /*
-     public function UserList(User $user,$id)
-     {
-     $userList = $user->where('division',$id)->orderBy('id','desc')->get();
-     return view('share.findUser',['users' => $userList]);
-     }
-     */
 }
