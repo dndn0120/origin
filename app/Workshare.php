@@ -24,7 +24,7 @@ class Workshare extends Model
    }
    public function SendConfirm()
    {
-       return $this->hasMany('App\WorkShareReadCheck','s_id');
+       return $this->hasMany('App\WorkShareReadCheck','s_id','id');
    }
    public function shareUser()
    {

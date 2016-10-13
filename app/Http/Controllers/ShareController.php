@@ -28,9 +28,8 @@ class ShareController extends Controller
             $result = Workshare::where('user_id',$request->user()->id)->orderBy('id','desc')->get();
             foreach($result as $list)
             {
-                $total = Shareuser::where('sid',$list->id)->count();
-                $check = WorkShareReadCheck::where('s_id',$list->id)->count();
-
+                $total = Workshare::find($list->id)->shareUser()->count();
+                $check = Workshare::find($list->id)->SendConfirm()->count();
                 $data[] = array(
                     'id'                => $list->id,
                     'subject'           => $list->subject,
