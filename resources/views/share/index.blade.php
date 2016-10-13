@@ -30,17 +30,17 @@
     		@foreach($shareList as $list)
     			<tr>
     				<td>1</td>
-    				<td><a href="{{ url('/detailView/'.$list['id']) }}">{{$list['subject']}}</a></td>
-    				<td>{{$list['user_name']}}</td>
-    				<td>{{$list['created_at']}}</td>
+    				<td><a href="{{ url('/detailView/'.$list->id) }}">{{$list->subject}}</a></td>
+    				<td>{{$list->user_name}}</td>
+    				<td>{{$list->created_at}}</td>
     				@if($mode == 'send')
-    					<td>{{$list['userCheck']}}/{{$list['userTotal']}}</td>
+
+    					<td>{{$list->confirm_user}}/{{$list->total_user}}</td>
     				@endif
     			</tr>
     		@endforeach
 		</tbody>
 	</table>
-
     <form action="{{ url('/write') }}" method="get">
         {{ csrf_field() }}
     	<button type="submit" class="btype01">등록</button>

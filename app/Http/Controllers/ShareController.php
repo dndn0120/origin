@@ -25,21 +25,10 @@ class ShareController extends Controller
             $data = $request->user()->workshares()->orderBy('id','desc')->get();
         }
         else{
-            $result = Workshare::where('user_id',$request->user()->id)->orderBy('id','desc')->get();
-            foreach($result as $list)
+            $data = Workshare::where('user_id',$request->user()->id)->orderBy('id','desc')->get();
+            foreach($data as $workshare)
             {
-                $total = Workshare::find($list->id)->shareUser()->count();
-                $check = Workshare::find($list->id)->SendConfirm()->count();
-                $data[] = array(
-                    'id'                => $list->id,
-                    'subject'           => $list->subject,
-                    'content'           => $list->content,
-                    'user_name'         => $list->user_name,
-                    'important_level'   => $list->important_level,
-                    'created_at'        => $list->created_at,
-                    'userTotal'         => $total,
-                    'userCheck'         => $check
-                );
+                $workshare->userCountAttribute();
             }
         }
         return view('share.index',['shareList'  =>  $data, 'mode' => $mode]);
