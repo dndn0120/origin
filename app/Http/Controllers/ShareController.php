@@ -79,9 +79,9 @@ class ShareController extends Controller
         $division = $division->orderBy('id','desc')->get();
         return view('share.divisionTree',['div_name' => $division]);
     }
-    public function GroupGetUserName(Devision $division)
+    public function GroupGetUserName(Devision $division, Request $request)
     {
-        $userData = $division->users()->get();
+        $userData = $division->users()->where('id','!=',$request->user()->id)->get();
         echo $userData;
     }
     public function detailView(Workshare $workshare,Request $request)
