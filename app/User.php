@@ -35,5 +35,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Devision');
     }
+    public function test()
+    {
+        echo 1234;
+    }
 
 }
